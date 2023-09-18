@@ -37,8 +37,6 @@ from ...core.properties import (
     Override,
     Positive,
     Seq,
-    UnitsSpec,
-    field,
 )
 from ...core.property_aliases import BorderRadius
 from ...core.property_mixins import ScalarFillProps, ScalarHatchProps, ScalarLineProps
@@ -49,14 +47,13 @@ from ..coordinates import (
     FrameRight,
     FrameTop,
 )
-from .annotation import Annotation, DataAnnotation
+from .annotation import Annotation
 
 #-----------------------------------------------------------------------------
 # Globals and constants
 #-----------------------------------------------------------------------------
 
 __all__ = (
-    "Band",
     "BoxAnnotation",
     "PolyAnnotation",
     "Slope",
@@ -243,50 +240,6 @@ class BoxAnnotation(Annotation):
 
     hover_fill_color = Override(default=None)
     hover_fill_alpha = Override(default=0.4)
-
-class Band(DataAnnotation):
-    ''' Render a filled area band along a dimension.
-
-    See :ref:`ug_basic_annotations_bands` for information on plotting bands.
-
-    '''
-
-    # explicit __init__ to support Init signatures
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-
-    lower = UnitsSpec(default=field("lower"), units_enum=CoordinateUnits, units_default="data", help="""
-    The coordinates of the lower portion of the filled area band.
-    """)
-
-    upper = UnitsSpec(default=field("upper"), units_enum=CoordinateUnits, units_default="data", help="""
-    The coordinates of the upper portion of the filled area band.
-    """)
-
-    base = UnitsSpec(default=field("base"), units_enum=CoordinateUnits, units_default="data", help="""
-    The orthogonal coordinates of the upper and lower values.
-    """)
-
-    dimension = Enum(Dimension, default='height', help="""
-    The direction of the band can be specified by setting this property
-    to "height" (``y`` direction) or "width" (``x`` direction).
-    """)
-
-    line_props = Include(ScalarLineProps, help="""
-    The {prop} values for the band.
-    """)
-
-    line_alpha = Override(default=0.3)
-
-    line_color = Override(default="#cccccc")
-
-    fill_props = Include(ScalarFillProps, help="""
-    The {prop} values for the band.
-    """)
-
-    fill_alpha = Override(default=0.4)
-
-    fill_color = Override(default="#fff9ba")
 
 
 class PolyAnnotation(Annotation):

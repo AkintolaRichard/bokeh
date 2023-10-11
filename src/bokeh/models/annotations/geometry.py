@@ -39,7 +39,6 @@ from ...core.properties import (
     Positive,
     Seq,
 )
-from ...core.property.singletons import Undefined
 from ...core.property_aliases import BorderRadius
 from ...core.property_mixins import ScalarFillProps, ScalarHatchProps, ScalarLineProps
 from ...util.deprecation import deprecated
@@ -51,10 +50,9 @@ from ..coordinates import (
     FrameRight,
     FrameTop,
 )
-from ..glyphs import Glyph
-from ..renderers import GlyphRenderer, Renderer
-from ..sources import ColumnDataSource
+from ..renderers import GlyphRenderer
 from .annotation import Annotation
+from .common import build_glyph_renderer
 
 #-----------------------------------------------------------------------------
 # Globals and constants
@@ -424,8 +422,8 @@ def Band(**kwargs: Any) -> GlyphRenderer:
         ``bokeh.glyphs.Band`` model or ``figure.band()`` method.
 
     """
-    deprecated((3, 3, 0), "bokeh.annotations.Band", "bokeh.glyphs.Band or figure.band()")
-    return _build_glyph_renderer(glyphs.Band, kwargs)
+    deprecated((3, 4, 0), "bokeh.annotations.Band", "bokeh.glyphs.Band or figure.band()")
+    return build_glyph_renderer(glyphs.Band, kwargs)
 
 def Whisker(**kwargs: Any) -> GlyphRenderer:
     """ Render whiskers along a dimension.
@@ -435,8 +433,8 @@ def Whisker(**kwargs: Any) -> GlyphRenderer:
         ``bokeh.glyphs.Whisker`` model or ``figure.whisker()`` method.
 
     """
-    deprecated((3, 3, 0), "bokeh.annotations.Whisker", "bokeh.glyphs.Whisker or figure.whisker()")
-    return _build_glyph_renderer(glyphs.Whisker, kwargs)
+    deprecated((3, 4, 0), "bokeh.annotations.Whisker", "bokeh.glyphs.Whisker or figure.whisker()")
+    return build_glyph_renderer(glyphs.Whisker, kwargs)
 
 #-----------------------------------------------------------------------------
 # Dev API
@@ -445,26 +443,6 @@ def Whisker(**kwargs: Any) -> GlyphRenderer:
 #-----------------------------------------------------------------------------
 # Private API
 #-----------------------------------------------------------------------------
-
-def _build_glyph_renderer(model: type[Glyph], kwargs: dict[str, Any]) -> GlyphRenderer:
-    defaults = dict(level="annotation")
-    glyph_renderer_kwargs = {}
-
-    for name in Renderer.properties():
-        default = defaults.get(name, Undefined)
-        value = kwargs.pop(name, default)
-        glyph_renderer_kwargs[name] = value
-
-    data_source = kwargs.pop("source", Undefined)
-    if data_source is Undefined:
-        data_source = ColumnDataSource()
-
-    return GlyphRenderer(
-        data_source=data_source,
-        glyph=model(**kwargs),
-        auto_ranging="none",
-        **glyph_renderer_kwargs,
-    )
 
 #-----------------------------------------------------------------------------
 # Code

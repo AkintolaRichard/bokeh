@@ -2249,7 +2249,9 @@
   },
   "bokeh.models.dom.DOMElement": {
     __extends__: "bokeh.models.dom.DOMNode",
-    style: null,
+    style: {
+      type: "map",
+    },
     children: [],
   },
   "bokeh.models.dom.DOMNode": {

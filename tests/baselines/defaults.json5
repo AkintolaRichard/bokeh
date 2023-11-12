@@ -1818,6 +1818,13 @@
     },
     module: "auto",
   },
+  OpenDialog: {
+    __extends__: "Callback",
+    dialog: {
+      type: "symbol",
+      name: "unset",
+    },
+  },
   OpenURL: {
     __extends__: "Callback",
     url: "http://",
@@ -1834,6 +1841,13 @@
       name: "unset",
     },
     value: {
+      type: "symbol",
+      name: "unset",
+    },
+  },
+  ToggleVisibility: {
+    __extends__: "Callback",
+    target: {
       type: "symbol",
       name: "unset",
     },

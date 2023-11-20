@@ -25,7 +25,7 @@ export namespace BaseNumericalSlider {
   export type Props = AbstractSlider.Props & {
     start: p.Property<number>
     end: p.Property<number>
-    step: p.Property<number>
+    step: p.Property<number | null>
     format: p.Property<string | TickFormatter>
   }
 }
@@ -34,18 +34,18 @@ export interface BaseNumericalSlider extends BaseNumericalSlider.Attrs {}
 
 export abstract class BaseNumericalSlider extends AbstractSlider<number> {
   declare properties: BaseNumericalSlider.Props
-  declare declare__view_type__: BaseNumericalSliderView
+  declare __view_type__: BaseNumericalSliderView
 
   constructor(attrs?: Partial<BaseNumericalSlider.Attrs>) {
     super(attrs)
   }
 
   static {
-    this.define<BaseNumericalSlider.Props>(({Number, String, Or, Ref}) => {
+    this.define<BaseNumericalSlider.Props>(({Number, String, Or, Ref, Nullable}) => {
       return {
         start:  [ Number ],
         end:    [ Number ],
-        step:   [ Number, 1 ],
+        step:   [ Nullable(Number), 1 ],
         format: [ Or(String, Ref(TickFormatter)) ],
       }
     })

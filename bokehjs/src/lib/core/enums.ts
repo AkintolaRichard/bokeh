@@ -110,8 +110,8 @@ export const LinePolicy = Enum("prev", "next", "nearest", "interp", "none")
 export type Location = "above" | "below" | "left" | "right"
 export const Location = Enum("above", "below", "left", "right")
 
-export type Logo = "normal" | "grey"
-export const Logo = Enum("normal", "grey")
+export type LogoStyle = "normal" | "grey"
+export const LogoStyle = Enum("normal", "grey")
 
 export type MapType = typeof MapType["__type__"]
 export const MapType = Enum("satellite", "roadmap", "terrain", "hybrid")

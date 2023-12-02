@@ -5982,6 +5982,9 @@
     match_aspect: false,
     origin: "corner",
   },
+  ClickButton: {
+    __extends__: "ToolButton",
+  },
   CopyTool: {
     __extends__: "ActionTool",
   },
@@ -6111,6 +6114,9 @@
       name: "unset",
     },
     dimensions: "both",
+  },
+  OnOffButton: {
+    __extends__: "ToolButton",
   },
   PanTool: {
     __extends__: "Drag",
@@ -6298,6 +6304,15 @@
     icon: null,
     description: null,
   },
+  ToolButton: {
+    __extends__: "UIElement",
+    tool: {
+      type: "symbol",
+      name: "unset",
+    },
+    icon: null,
+    tooltip: null,
+  },
   ToolProxy: {
     __extends__: "Model",
     tools: [],
@@ -6308,6 +6323,7 @@
     __extends__: "UIElement",
     logo: "normal",
     autohide: false,
+    children: [],
     tools: [],
     active_drag: "auto",
     active_inspect: "auto",

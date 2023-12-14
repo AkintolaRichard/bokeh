@@ -48,6 +48,7 @@ ALL  = (
     'enumeration',
     'FlowMode',
     'FontStyle',
+    'FormatterType',
     'HAlign',
     'HatchPattern',
     'HatchPatternAbbreviation',
@@ -190,6 +191,9 @@ class Test_bce:
 
     def test_FontStyle(self) -> None:
         assert tuple(bce.FontStyle) == ('normal', 'italic', 'bold', 'bold italic')
+
+    def test_FormatterType(self) -> None:
+        assert tuple(bce.FormatterType) == ("raw", "basic", "numeral", "printf", "datetime")
 
     def test_HatchPattern(self) -> None:
         assert tuple(bce.HatchPattern) == (
@@ -357,6 +361,7 @@ def test_enums_contents() -> None:
         'Direction',
         'FlowMode',
         'FontStyle',
+        'FormatterType',
         'HAlign',
         'HatchPattern',
         'HatchPatternAbbreviation',

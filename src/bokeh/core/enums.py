@@ -108,6 +108,7 @@ __all__ = (
     'enumeration',
     'FlowMode',
     'FontStyle',
+    'FormatterType',
     'HAlign',
     'HatchPattern',
     'HatchPatternAbbreviation',
@@ -313,6 +314,9 @@ FlowMode = enumeration("block", "inline")
 
 #: Specify the font style for rendering text
 FontStyle = enumeration("normal", "italic", "bold", "bold italic")
+
+#: Names of built-in value formatters.
+FormatterType = enumeration("raw", "basic", "numeral", "printf", "datetime")
 
 _hatch_patterns = (
     (" ",  "blank"),

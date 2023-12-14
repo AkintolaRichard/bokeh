@@ -74,6 +74,9 @@ export const HatchPatternType = Enum(
   " ", ".", "o", "-", "|", "+", '"', ":", "@",  "/", "\\", "x", ",", "`", "v", ">", "*",
 )
 
+export const FormatterType = Enum("raw", "basic", "numeral", "printf", "datetime")
+export type FormatterType = typeof FormatterType["__type__"]
+
 export type HTTPMethod = "POST" | "GET"
 export const HTTPMethod = Enum("POST", "GET")
 

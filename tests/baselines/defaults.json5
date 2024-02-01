@@ -1804,6 +1804,13 @@
   Callback: {
     __extends__: "Model",
   },
+  CloseDialog: {
+    __extends__: "Callback",
+    dialog: {
+      type: "symbol",
+      name: "unset",
+    },
+  },
   CustomCode: {
     __extends__: "Callback",
   },

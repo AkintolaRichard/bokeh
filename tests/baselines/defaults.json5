@@ -6463,16 +6463,6 @@
     left_limit: null,
     right_limit: null,
   },
-  Panel: {
-    __extends__: "Pane",
-    position: {
-      type: "symbol",
-      name: "unset",
-    },
-    anchor: "top_left",
-    width: "auto",
-    height: "auto",
-  },
   Examiner: {
     __extends__: "UIElement",
     target: null,
@@ -6530,6 +6520,16 @@
   },
   MenuItem: {
     __extends__: "Model",
+  },
+  Panel: {
+    __extends__: "Pane",
+    position: {
+      type: "symbol",
+      name: "unset",
+    },
+    anchor: "top_left",
+    width: "auto",
+    height: "auto",
   },
   Pane: {
     __extends__: "UIElement",
